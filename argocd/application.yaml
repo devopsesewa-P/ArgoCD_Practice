@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: nginx-app
-  namespace: argocd   # IMPORTANT: ArgoCD watches this namespace
+  namespace: argocd
 spec:
   project: default
 
@@ -16,5 +16,8 @@ spec:
     namespace: argocd-demo
 
   syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
